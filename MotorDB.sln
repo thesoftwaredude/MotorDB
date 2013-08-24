@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorDB.UI", "MotorDB.UI\MotorDB.UI.csproj", "{6BDDE876-21D7-43DA-8607-F87880E96AA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorDB.UI.Tests", "MotorDB.UI.Tests\MotorDB.UI.Tests.csproj", "{5CF6A51A-9045-44DB-B49C-C93FCE6CB6C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorDB.Core", "MotorDB.Core\MotorDB.Core.csproj", "{A9571F66-CE0A-4A80-80C8-21D6B1AAE3C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BDDE876-21D7-43DA-8607-F87880E96AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BDDE876-21D7-43DA-8607-F87880E96AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BDDE876-21D7-43DA-8607-F87880E96AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BDDE876-21D7-43DA-8607-F87880E96AA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CF6A51A-9045-44DB-B49C-C93FCE6CB6C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CF6A51A-9045-44DB-B49C-C93FCE6CB6C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CF6A51A-9045-44DB-B49C-C93FCE6CB6C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CF6A51A-9045-44DB-B49C-C93FCE6CB6C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9571F66-CE0A-4A80-80C8-21D6B1AAE3C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9571F66-CE0A-4A80-80C8-21D6B1AAE3C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9571F66-CE0A-4A80-80C8-21D6B1AAE3C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9571F66-CE0A-4A80-80C8-21D6B1AAE3C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
