@@ -23,6 +23,8 @@ namespace MotorDB.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

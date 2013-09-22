@@ -39,6 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\PolicyRepository.cs" />
+    <Compile Include="Interfaces\IPolicyRepository.cs" />
+    <Compile Include="Models\Policy.cs" />
+    <Compile Include="Models\PolicyPeriod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
