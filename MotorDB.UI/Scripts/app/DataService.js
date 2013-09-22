@@ -14,4 +14,3 @@ var MotorDB;
     })();
     MotorDB.DataService = DataService;
 })(MotorDB || (MotorDB = {}));
-//# sourceMappingURL=DataService.js.map

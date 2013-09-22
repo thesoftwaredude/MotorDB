@@ -376,4 +376,7 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
+  <Target Name="BeforeBuild">
+    <Exec Command="&quot;$(SolutionDir)Tools\TypeScript\tsc&quot; @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
+  </Target>
 </Project>
