@@ -262,6 +262,12 @@
     <None Include="Scripts\Lib\jquery-1.10.2.intellisense.js" />
     <TypeScriptCompile Include="Scripts\app\DataService.ts" />
     <TypeScriptCompile Include="Scripts\app\Policy.ts" />
+    <Content Include="Scripts\app\DataService.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\app\Policy.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\jquery.blockUI.js" />
     <Content Include="Scripts\jquery.blockUI.min.js" />
     <Content Include="Scripts\Lib\jquery-1.10.2.js" />
