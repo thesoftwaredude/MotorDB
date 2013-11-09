@@ -9,6 +9,5 @@ module MotorDB {
                 type: 'GET'
             });            
         }
-
     }
 }

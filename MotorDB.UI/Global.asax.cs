@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using MotorDB.UI.App_Start;
 
 namespace MotorDB.UI
 {
@@ -23,6 +24,7 @@ namespace MotorDB.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            StructuremapMvc.Start();
 
             BundleTable.EnableOptimizations = true;
         }

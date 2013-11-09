@@ -1,32 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using MotorDB.Core.Data;
 using MotorDB.Core.Interfaces;
-using MotorDB.Core.Models;
 
 namespace MotorDB.UI.api
 {
     public class PolicyController : BaseApiController
     {
-        private readonly Lazy<IPolicyRepository> _policyRepository = new Lazy<IPolicyRepository>(() => new PolicyRepository());
+        private readonly IPolicyRepository _policyRepository;
 
-        public PolicyController()
-        {
-
-        }
-
+       
         public PolicyController(IPolicyRepository policyRepository)
         {
-            _policyRepository = new Lazy<IPolicyRepository>(() => policyRepository);    
+            _policyRepository = policyRepository;    
         }
 
         public HttpResponseMessage Get()
         {
-            var policyDataToReturn = _policyRepository.Value.Get();
+            var policyDataToReturn = _policyRepository.Get();
             var response = Request.CreateResponse(HttpStatusCode.OK, policyDataToReturn);
             return response;
         }
@@ -34,7 +25,7 @@ namespace MotorDB.UI.api
 
         public HttpResponseMessage Get(int id)
         {
-            var policyToReturn = _policyRepository.Value.GetPolicyFor(id);
+            var policyToReturn = _policyRepository.GetPolicyFor(id);
             if ( policyToReturn == null )
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             var response = Request.CreateResponse(HttpStatusCode.OK, policyToReturn);
