@@ -5,7 +5,7 @@ module MotorDB {
 
         public GetAllPolicys() {
             return $.ajax({
-                url: 'api/policy',
+                url: 'api/policys',
                 type: 'GET'
             });            
         }

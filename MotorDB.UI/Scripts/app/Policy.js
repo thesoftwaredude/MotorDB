@@ -32,3 +32,4 @@ var MotorDB;
     })();
     MotorDB.PolicyViewModel = PolicyViewModel;
 })(MotorDB || (MotorDB = {}));
+//# sourceMappingURL=Policy.js.map

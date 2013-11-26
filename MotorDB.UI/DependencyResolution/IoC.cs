@@ -16,6 +16,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
+using System.Web;
 using StructureMap;
 namespace MotorDB.UI.DependencyResolution {
     public static class IoC {
@@ -23,9 +24,10 @@ namespace MotorDB.UI.DependencyResolution {
             ObjectFactory.Initialize(x =>
                         {
                             x.Scan(scan =>
-                                    {
-                                        scan.AssembliesFromApplicationBaseDirectory();
+                            {
+                                scan.AssembliesFromApplicationBaseDirectory(assembly => !assembly.FullName.StartsWith("System.Web"));
                                         scan.TheCallingAssembly();
+                                        scan.AddAllTypesOf<IHttpModule>();
                                         scan.WithDefaultConventions();
                                     });
             //                x.For<IExample>().Use<Example>();

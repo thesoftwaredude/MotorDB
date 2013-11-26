@@ -5,16 +5,18 @@ using MotorDB.Core.Interfaces;
 
 namespace MotorDB.UI.api
 {
+    [Route("api/policys")]
     public class PolicyController : BaseApiController
     {
         private readonly IPolicyRepository _policyRepository;
 
-       
+                  
         public PolicyController(IPolicyRepository policyRepository)
         {
             _policyRepository = policyRepository;    
         }
 
+        //[Route("policys")]
         public HttpResponseMessage Get()
         {
             var policyDataToReturn = _policyRepository.Get();
@@ -22,7 +24,7 @@ namespace MotorDB.UI.api
             return response;
         }
 
-
+        //[Route("policys/{id:int}")]
         public HttpResponseMessage Get(int id)
         {
             var policyToReturn = _policyRepository.GetPolicyFor(id);
