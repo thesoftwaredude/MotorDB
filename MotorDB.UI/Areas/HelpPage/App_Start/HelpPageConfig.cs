@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
@@ -15,7 +16,8 @@ namespace MotorDB.UI.Areas.HelpPage
     {
         public static void Register(HttpConfiguration config)
         {
-            //// Uncomment the following to use the documentation from XML documentation file.
+            config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/UI.xml")));
+            // Uncomment the following to use the documentation from XML documentation file.
             //config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
 
             //// Uncomment the following to use "sample string" as the sample for all actions that have string as the body parameter or return type.

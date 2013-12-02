@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Web.Http;
 using System.Web.Mvc;
 using MotorDB.UI.Areas.HelpPage.Models;
@@ -25,7 +26,15 @@ namespace MotorDB.UI.Areas.HelpPage.Controllers
         public ActionResult Index()
         {
             ViewBag.DocumentationProvider = Configuration.Services.GetDocumentationProvider();
-            return View(Configuration.Services.GetApiExplorer().ApiDescriptions);
+
+            var viewData = Configuration.Services.GetApiExplorer().ApiDescriptions;
+            var data = from apiDescription in viewData
+                       where apiDescription.Documentation != null
+                       select apiDescription;
+
+            return View(viewData);
+
+            //return View(Configuration.Services.GetApiExplorer().ApiDescriptions);
         }
 
         public ActionResult Api(string apiId)

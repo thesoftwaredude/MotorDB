@@ -21,17 +21,23 @@ using StructureMap;
 namespace MotorDB.UI.DependencyResolution {
     public static class IoC {
         public static IContainer Initialize() {
-            ObjectFactory.Initialize(x =>
-                        {
-                            x.Scan(scan =>
-                            {
-                                scan.AssembliesFromApplicationBaseDirectory(assembly => !assembly.FullName.StartsWith("System.Web"));
-                                        scan.TheCallingAssembly();
-                                        scan.AddAllTypesOf<IHttpModule>();
-                                        scan.WithDefaultConventions();
-                                    });
-            //                x.For<IExample>().Use<Example>();
-                        });
+            //ObjectFactory.Initialize(x =>
+            //            {
+            //                x.Scan(scan =>
+            //                {
+            //                    scan.AssembliesFromApplicationBaseDirectory(assembly => !assembly.FullName.StartsWith("System.Web"));
+            //                    scan.TheCallingAssembly();
+            //                    scan.AddAllTypesOf<IHttpModule>();
+            //                    scan.WithDefaultConventions();
+            //                });//x.For<IExample>().Use<Example>();
+            //            });
+            ObjectFactory.Configure(x => x.Scan(scan =>
+            {
+                scan.TheCallingAssembly();
+                scan.AssembliesFromApplicationBaseDirectory(assembly => !assembly.FullName.StartsWith("System.Web"));
+                scan.AddAllTypesOf<IHttpModule>();
+                scan.WithDefaultConventions();
+            }));
             return ObjectFactory.Container;
         }
     }

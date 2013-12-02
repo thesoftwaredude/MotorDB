@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Web.Http;
 using MotorDB.Core.Interfaces;
+using MotorDB.Core.Models;
 
 namespace MotorDB.UI.api
 {
@@ -16,7 +17,10 @@ namespace MotorDB.UI.api
             _policyRepository = policyRepository;    
         }
 
-        //[Route("policys")]
+        /// <summary>
+        /// Get a list of all policies
+        /// </summary>
+        /// <returns>List of <see cref="Policy"/></returns>
         public HttpResponseMessage Get()
         {
             var policyDataToReturn = _policyRepository.Get();
@@ -24,7 +28,11 @@ namespace MotorDB.UI.api
             return response;
         }
 
-        //[Route("policys/{id:int}")]
+        /// <summary>
+        /// Get an individual policy based on the policy identifier
+        /// </summary>
+        /// <param name="id">Required Policy Identifier</param>
+        /// <returns>Returns an <see cref="Policy"/> object</returns>
         public HttpResponseMessage Get(int id)
         {
             var policyToReturn = _policyRepository.GetPolicyFor(id);
