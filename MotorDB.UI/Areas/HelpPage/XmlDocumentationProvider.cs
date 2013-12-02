@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using System.Xml.XPath;
+using MotorDB.Core;
 
 namespace MotorDB.UI.Areas.HelpPage
 {
@@ -30,6 +31,17 @@ namespace MotorDB.UI.Areas.HelpPage
             }
             XPathDocument xpath = new XPathDocument(documentPath);
             _documentNavigator = xpath.CreateNavigator();
+        }
+
+        public XmlDocumentationProvider(string rootDocument, string secondaryDocument)
+        {
+            var mergeXML = new MergeXml();
+            if (string.IsNullOrEmpty(rootDocument) || string.IsNullOrEmpty(secondaryDocument))
+            {
+                throw new ArgumentNullException(string.Format("Invalid file locations {0}, {1}", rootDocument, secondaryDocument));
+            }
+
+            _documentNavigator = mergeXML.MergeDocument(rootDocument, secondaryDocument);
         }
 
         public string GetDocumentation(HttpControllerDescriptor controllerDescriptor)

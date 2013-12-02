@@ -16,7 +16,10 @@ namespace MotorDB.UI.Areas.HelpPage
     {
         public static void Register(HttpConfiguration config)
         {
-            config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/UI.xml")));
+            config.SetDocumentationProvider(new XmlDocumentationProvider( HttpContext.Current.Server.MapPath("~/App_Data/UI.xml"),
+                HttpContext.Current.Server.MapPath("~/App_Data/Core.xml")));
+
+            //config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/UI.xml")));
             // Uncomment the following to use the documentation from XML documentation file.
             //config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
 
@@ -48,6 +51,8 @@ namespace MotorDB.UI.Areas.HelpPage
             //// Uncomment the following to correct the sample response when the action returns an HttpResponseMessage with ObjectContent<string>.
             //// The sample will be generated as if the controller named "Values" and action named "Post" were returning a string.
             //config.SetActualResponseType(typeof(string), "Values", "Post");
+
+            config.SetActualRequestType(typeof(MotorDB.Core.Models.Policy), "Policy", "Get");
         }
     }
 }

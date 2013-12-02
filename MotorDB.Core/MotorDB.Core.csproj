@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Data\PolicyRepository.cs" />
     <Compile Include="Interfaces\IPolicyRepository.cs" />
+    <Compile Include="MergeXML.cs" />
     <Compile Include="Models\Policy.cs" />
     <Compile Include="Models\PolicyPeriod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
