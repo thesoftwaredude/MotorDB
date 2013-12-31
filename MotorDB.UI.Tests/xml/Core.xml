@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MotorDB.Core</name>
+    </assembly>
+    <members>
+        <member name="T:MotorDB.Core.Models.Policy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MotorDB.Core.Models.Policy.Identifier">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MotorDB.Core.Models.Policy.PolicyNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MotorDB.Core.Models.Policy.PolicyholderName">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

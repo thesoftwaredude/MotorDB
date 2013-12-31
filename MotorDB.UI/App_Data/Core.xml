@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MotorDB.Core</name>
+    </assembly>
+    <members>
+        <member name="T:MotorDB.Core.Models.Policy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MotorDB.Core.Models.Policy.Identifier">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MotorDB.Core.Models.Policy.PolicyNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MotorDB.Core.Models.Policy.PolicyholderName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MotorDB.Core.Models.Policy.PolicyPeriods">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MotorDB.Core.Models.PolicyPeriod">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MotorDB.Core.Models.PolicyPeriod.StartDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MotorDB.Core.Models.PolicyPeriod.EndDate">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

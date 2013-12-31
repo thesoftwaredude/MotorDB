@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MotorDB.UI</name>
+    </assembly>
+    <members>
+        <member name="M:MotorDB.UI.api.PolicyController.Get">
+            <summary>
+            Get a list of all policies
+            </summary>
+            <returns>List of <see cref="T:MotorDB.Core.Models.Policy"/></returns>
+        </member>
+        <member name="M:MotorDB.UI.api.PolicyController.Get(System.Int32)">
+            <summary>
+            Get an individual policy based on the policy identifier
+            </summary>
+            <param name="id">Required Policy Identifier</param>
+            <returns>Returns an <see cref="T:MotorDB.Core.Models.Policy"/> object</returns>
+        </member>
+    </members>
+</doc>
