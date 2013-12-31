@@ -2,7 +2,7 @@
 @using MotorDB.UI.Areas.HelpPage.Models
 @model HelpPageApiModel
 
-@{ 
+@{
     var description = Model.ApiDescription;
     bool hasParameters = description.ParameterDescriptions.Count > 0;
     bool hasRequestSamples = Model.SampleRequests.Count > 0;
@@ -19,33 +19,31 @@
         <p>No documentation available.</p>
     }
 
-    @if (hasParameters || hasRequestSamples)
+    <h2>Request Information</h2>
+    @if (hasParameters)
     {
-        <h2>Request Information</h2>
-        if (hasParameters)
-        {
-            <h3>Parameters</h3>
-            @Html.DisplayFor(apiModel => apiModel.ApiDescription.ParameterDescriptions, "Parameters")
-        }
-        if (hasRequestSamples)
-        {
-            <h3>Request body formats</h3>
-            @Html.DisplayFor(apiModel => apiModel.SampleRequests, "Samples")
-        }
-    } 
+        <h3>Parameters</h3>
+        @Html.DisplayFor(apiModel => apiModel.ApiDescription.ParameterDescriptions, "Parameters")
+    }
 
-    @if (hasResponseSamples)
+    <h2>Response Information</h2>
+    @if (!String.IsNullOrEmpty(Model.ResponseDocumentation) )
     {
-        <h2>Response Information</h2>
-        if (description.ResponseDescription.Documentation != null)
+        <p>@Model.ResponseDocumentation</p>
+    }
+
+    @if (hasRequestSamples)
+    {
+        <h3>Request body formats</h3>
+        @Html.DisplayFor(apiModel => apiModel.SampleRequests, "Samples")
+    }
+
+
+    @{
+        if (hasResponseSamples)
         {
-            <p>@description.ResponseDescription.Documentation</p>
+            <h3>Response body formats</h3>
+            @Html.DisplayFor(apiModel => apiModel.SampleResponses, "Samples")
         }
-        else
-        {
-            <p>No documentation available.</p>
-        }
-        <h3>Response body formats</h3>
-        @Html.DisplayFor(apiModel => apiModel.SampleResponses, "Samples")
     }
 </div>

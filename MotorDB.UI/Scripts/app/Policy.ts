@@ -18,7 +18,7 @@ module MotorDB {
         constructor() {
             var self = this;
             self.dataService = new MotorDB.DataService();
-            self.Policies = ko.observableArray([]);
+            self.Policies = ko.observableArray<Policy>();
         }
 
         public Load() {

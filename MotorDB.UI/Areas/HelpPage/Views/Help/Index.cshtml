@@ -38,4 +38,26 @@
 
 @section Scripts {
     <link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(function() {
+            $(":button").button(
+                {
+                    icons: { primary: "ui-icon-info" }
+                });
+            $(":button").on("click", ShowHideApiCalls);
+        });
+
+        function ShowHideApiCalls() {
+            var buttonObject = $(this);
+            var apiTable = buttonObject.next(".controller_api");
+            if (buttonObject.text() == buttonObject.data("text-swap")) {
+                buttonObject.button( "option", "label", buttonObject.data("text-original") );
+                apiTable.hide();
+            } else {
+                buttonObject.data("text-original", buttonObject.text());
+                buttonObject.button( "option", "label", buttonObject.data("text-swap") );
+                apiTable.show();
+            }
+        }
+    </script>
 }

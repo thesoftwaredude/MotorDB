@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 
@@ -52,7 +48,7 @@ namespace MotorDB.UI.Areas.HelpPage
             //// The sample will be generated as if the controller named "Values" and action named "Post" were returning a string.
             //config.SetActualResponseType(typeof(string), "Values", "Post");
 
-            config.SetActualRequestType(typeof(MotorDB.Core.Models.Policy), "Policy", "Get");
+            config.SetActualRequestType(typeof(Core.Models.Policy), "Policy", "Get");
         }
     }
 }

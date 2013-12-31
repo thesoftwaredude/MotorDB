@@ -20,7 +20,7 @@ namespace MotorDB.UI.api
         /// <summary>
         /// Get a list of all policies
         /// </summary>
-        /// <returns>List of <see cref="Policy"/></returns>
+        /// <returns>Returns a list of <see cref="Policy" /> objects</returns>
         public HttpResponseMessage Get()
         {
             var policyDataToReturn = _policyRepository.Get();
@@ -32,7 +32,7 @@ namespace MotorDB.UI.api
         /// Get an individual policy based on the policy identifier
         /// </summary>
         /// <param name="id">Required Policy Identifier</param>
-        /// <returns>Returns an <see cref="Policy"/> object</returns>
+        /// <returns>Returns a <see cref="Policy"/> object</returns>
         public HttpResponseMessage Get(int id)
         {
             var policyToReturn = _policyRepository.GetPolicyFor(id);

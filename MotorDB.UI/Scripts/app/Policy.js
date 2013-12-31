@@ -17,7 +17,7 @@ var MotorDB;
         function PolicyViewModel() {
             var self = this;
             self.dataService = new MotorDB.DataService();
-            self.Policies = ko.observableArray([]);
+            self.Policies = ko.observableArray();
         }
         PolicyViewModel.prototype.Load = function () {
             var self = this;

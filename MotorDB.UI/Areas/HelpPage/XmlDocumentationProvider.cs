@@ -9,10 +9,30 @@ using MotorDB.Core;
 
 namespace MotorDB.UI.Areas.HelpPage
 {
+
+    public static class StringExtensions
+    {
+        public static string IncludeSeeNodeInReturn(this string returnDescription)
+        {
+            //InnerXml <returns>Returns a list of <see cref="T:MotorDB.Core.Models.Policy" /> objects</returns>
+            var startOfseeNode = returnDescription.IndexOf("<see");
+
+            if (startOfseeNode < 0)
+                return returnDescription;
+
+            var endOfseeNode = returnDescription.IndexOf("/>", startOfseeNode);
+
+            var crefData = returnDescription.Substring(startOfseeNode + 11, returnDescription.Substring(startOfseeNode + 11).IndexOf("/>") - 2).Split('.');
+            var crefObject = crefData.Last();
+            var result = String.Format("{0}{1}{2}", returnDescription.Substring(0, startOfseeNode), crefObject, returnDescription.Substring(endOfseeNode + 2));
+            return result;
+        }
+    }
+
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
     /// </summary>
-    public class XmlDocumentationProvider : IDocumentationProvider
+    public class XmlDocumentationProvider : IDocumentationProvider, IResponseDocumentationProvider
     {
         private XPathNavigator _documentNavigator;
         private const string TypeExpression = "/doc/members/member[@name='T:{0}']";
@@ -78,8 +98,18 @@ namespace MotorDB.UI.Areas.HelpPage
 
         public string GetResponseDocumentation(HttpActionDescriptor actionDescriptor)
         {
+            //XPathNavigator methodNode = GetMethodNode(actionDescriptor);
+            //return GetTagValue(methodNode, "returns");
             XPathNavigator methodNode = GetMethodNode(actionDescriptor);
-            return GetTagValue(methodNode, "returns");
+            if (methodNode != null)
+            {
+                XPathNavigator returnsNode = methodNode.SelectSingleNode("returns");
+                if (returnsNode != null)
+                {
+                    return returnsNode.InnerXml.IncludeSeeNodeInReturn();
+                }
+            }
+            return null;
         }
 
         private XPathNavigator GetMethodNode(HttpActionDescriptor actionDescriptor)

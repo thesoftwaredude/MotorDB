@@ -39,5 +39,10 @@ namespace MotorDB.UI.Areas.HelpPage.Models
         /// Gets the error messages associated with this model.
         /// </summary>
         public Collection<string> ErrorMessages { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ResponseDocumentation { get; set; }
     }
 }
