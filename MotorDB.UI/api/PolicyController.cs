@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.Results;
 using MotorDB.Core.Interfaces;
 using MotorDB.Core.Models;
 
@@ -23,11 +24,12 @@ namespace MotorDB.UI.api
         /// </summary>
         /// <returns>Returns a list of <see cref="Policy" /> objects</returns>
         [ResponseType(typeof(Policy))]
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
             var policyDataToReturn = _policyRepository.Get();
-            var response = Request.CreateResponse(HttpStatusCode.OK, policyDataToReturn);
-            return response;
+            return Ok(policyDataToReturn);
+            //var response = Request.CreateResponse(HttpStatusCode.OK, policyDataToReturn);
+            //return response;
         }
 
         /// <summary>
@@ -36,14 +38,12 @@ namespace MotorDB.UI.api
         /// <param name="id">Required Policy Identifier</param>
         /// <returns>Returns a <see cref="Policy"/> object</returns>
         [ResponseType(typeof(Policy))]
-        public HttpResponseMessage Get(int id)
+        public IHttpActionResult Get(int id)
         {
             var policyToReturn = _policyRepository.GetPolicyFor(id);
-            if ( policyToReturn == null )
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            var response = Request.CreateResponse(HttpStatusCode.OK, policyToReturn);
-            return response;
-
+            if (policyToReturn == null)
+                return NotFound();
+            return Ok(policyToReturn);
         }
 
         // GET api/<controller>

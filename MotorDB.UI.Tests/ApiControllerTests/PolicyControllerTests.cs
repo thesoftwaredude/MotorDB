@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Http.Results;
 using Moq;
 using MotorDB.Core.Interfaces;
 using MotorDB.Core.Models;
@@ -49,8 +51,8 @@ namespace MotorDB.UI.Tests.ApiControllerTests
         public void When_Call_Get_Method_Then_Expected_Status_Code_Ok()
         {
             var controller = GetControllerForTests();
-            var response = controller.Get();
-            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+            var policyResult = controller.Get();
+            Assert.That(policyResult, Is.Not.Null);
         }
 
         [Test]
@@ -62,11 +64,11 @@ namespace MotorDB.UI.Tests.ApiControllerTests
             var controller = GetControllerForTests();
 
             var response = controller.Get();
-            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
 
-            var returnedObjects = response.Content.ReadAsStringAsync().Result;
-            var returnedListOfPolicy = (List<Policy>)JsonConvert.DeserializeObject(returnedObjects, typeof(List<Policy>));
-            Assert.That(returnedListOfPolicy.Count, Is.EqualTo(mockDatabase.ToList().Count));
+            var returnedListOfPolicy =
+                response as OkNegotiatedContentResult<IList<Policy>>;
+            Assert.That(returnedListOfPolicy, Is.Not.Null);
+            Assert.That(returnedListOfPolicy.Content.Count, Is.EqualTo(mockDatabase.Count()));
         }
 
         [Test]
@@ -78,11 +80,10 @@ namespace MotorDB.UI.Tests.ApiControllerTests
             var controller = GetControllerForTests();
 
             var response = controller.Get(1);
-            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
 
-            var returnedObjects = response.Content.ReadAsStringAsync().Result;
-            var returnedPolicy = (Policy)JsonConvert.DeserializeObject(returnedObjects, typeof(Policy));
-            Assert.That(returnedPolicy.Identifier, Is.EqualTo(1));
+            var returnedPolicy = response as OkNegotiatedContentResult<Policy>;
+
+            Assert.That(returnedPolicy.Content.Identifier, Is.EqualTo(1));
         }
 
         [Test]
@@ -91,7 +92,7 @@ namespace MotorDB.UI.Tests.ApiControllerTests
             var controller = GetControllerForTests();
 
             var response = controller.Get(9999);
-            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NotFound));
+            Assert.That(response, Is.TypeOf<NotFoundResult>());
         }
 
         private IList<Policy> GetMockDatabase()
