@@ -6,7 +6,7 @@ var MotorDB;
         }
         DataService.prototype.GetAllPolicys = function () {
             return $.ajax({
-                url: 'api/policys',
+                url: 'api/policy',
                 type: 'GET'
             });
         };

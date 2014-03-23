@@ -8,7 +8,7 @@ using MotorDB.Core.Models;
 
 namespace MotorDB.UI.api
 {
-    [Route("api/policys")]
+    [Route("api/policy")]
     public class PolicyController : BaseApiController
     {
         private readonly IPolicyRepository _policyRepository;

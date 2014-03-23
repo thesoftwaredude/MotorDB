@@ -129,6 +129,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
+    <Content Include="javascript\content\index.html" />
+    <Content Include="javascript\content\mocha.css" />
+    <Content Include="javascript\content\chai.js" />
+    <Content Include="javascript\content\mocha.js" />
+    <Content Include="javascript\content\sinon-server-1.9.0.js" />
+    <Content Include="javascript\content\sinon.js" />
+    <Content Include="javascript\script\policytests.js" />
+    <Content Include="javascript\script\testpolicy.js" />
     <Content Include="xml\Core.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -155,6 +163,10 @@
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy $(SolutionDir)MotorDB.UI\Scripts\app\*.js $(ProjectDir)javascript\script /y
+xcopy $(SolutionDir)MotorDB.UI\Scripts\lib\*.* $(ProjectDir)javascript\lib /y</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

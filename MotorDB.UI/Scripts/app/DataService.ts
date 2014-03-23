@@ -1,11 +1,16 @@
 /// <reference path="../typings/jquery/jquery.d.ts" />
 
 module MotorDB {
-    export class DataService {
+
+    export interface IDataService {
+        GetAllPolicys();
+    }
+
+    export class DataService implements IDataService {
 
         public GetAllPolicys() {
             return $.ajax({
-                url: 'api/policys',
+                url: 'api/policy',
                 type: 'GET'
             });            
         }
