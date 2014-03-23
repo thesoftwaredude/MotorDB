@@ -3,6 +3,7 @@
 /// <reference path="DataService.ts" />
 
 module MotorDB {
+
     export class Policy {
         constructor(
             public Identifier: number,
@@ -12,12 +13,12 @@ module MotorDB {
     }
 
     export class PolicyViewModel {
-        private dataService: MotorDB.DataService;
+        private dataService: IDataService;
         public Policies: KnockoutObservableArray<Policy>;
         
-        constructor() {
+        constructor(dataService: IDataService) {
             var self = this;
-            self.dataService = new MotorDB.DataService();
+            self.dataService = dataService;
             self.Policies = ko.observableArray<Policy>();
         }
 

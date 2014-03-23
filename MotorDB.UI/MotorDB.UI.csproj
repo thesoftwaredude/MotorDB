@@ -312,7 +312,19 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Scripts\app\DataService.min.js">
+      <DependentUpon>DataService.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\app\Policy.min.js.map">
+      <DependentUpon>Policy.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\app\DataService.min.js.map">
+      <DependentUpon>DataService.min.js</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\app\Policy.min.js">
+      <DependentUpon>Policy.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />

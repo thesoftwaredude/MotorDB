@@ -39,8 +39,9 @@
     <script type="text/javascript" src="~/Scripts/app/DataService.js"></script>
     <script type="text/javascript" src="~/Scripts/app/Policy.js"></script>
     <script type="text/javascript">
-        $(function() {
-            var vm = new MotorDB.PolicyViewModel();
+        $(function () {
+            var dataService = new MotorDB.DataService();
+            var vm = new MotorDB.PolicyViewModel(dataService);
             $.when(vm.Load())
                 .then(function () {
                     ko.applyBindings(vm, document.getElementById("PolicyData"));
